@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contact | BiteCraft</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet"><link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <!-- Announcement Bar with Outlet Selector & Store Status -->
+  <div class="announcement-bar">
+    <div class="container" style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;">
+      <div style="display:flex;align-items:center;gap:10px;">
+        <span class="store-status-badge open">
+          <span class="status-pulse-dot"></span><span>Open Now (11 AM - 11 PM)</span>
+        </span>
+        <span class="announcement-badge">Contact Demo</span>
+        <span>Forms validate locally and do not send data to any real inbox.</span>
+      </div>
+      <div style="display:flex;align-items:center;gap:8px;">
+        <span style="font-size:12px;opacity:0.9;">Outlet:</span>
+        <select class="outlet-select header-outlet-select" aria-label="Select delivery outlet">
+          <option value="downtown">📍 Metro Downtown Hub (20-30m)</option>
+          <option value="westside">📍 Westside Mall Express (30-40m)</option>
+          <option value="airport">📍 Airport Cloud Kitchen (35-45m)</option>
+        </select>
+      </div>
+    </div>
+  </div>
+  <header class="site-header">
+    <div class="container nav-container">
+      <a href="index.html" class="brand-logo"><div class="brand-icon">🥪</div><div class="brand-title">BiteCraft <span class="tagline-mini">Seriously Delicious</span></div></a>
+      <nav class="nav-menu" id="navMenu">
+        <a href="index.html" class="nav-link">Home</a>
+        <a href="menu.html" class="nav-link">Menu</a>
+        <a href="combo.html" class="nav-link">Combos 🍱</a>
+        <a href="orders.html" class="nav-link">My Orders 📋</a>
+        <a href="about.html" class="nav-link">About Us</a>
+        <a href="contact.html" class="nav-link active">Contact</a>
+        <a href="admin.html" class="nav-link">Dashboard Demo</a>
+      </nav>
+      <div class="nav-actions"><a href="menu.html" class="btn btn-primary">Order Now</a><button class="theme-toggle" type="button" aria-label="Toggle theme">🌙</button><button class="cart-btn-trigger">🛒 <span class="cart-badge">0</span></button><button class="mobile-menu-btn" id="mobileMenuToggle">☰</button></div>
+    </div>
+  </header>
+
+  <main style="padding:60px 0 80px;">
+    <div class="container">
+      <div class="section-header"><span class="section-tag">Get in Touch</span><h1 class="section-title">Contact BiteCraft</h1><p class="section-subtitle">This is a professional demo contact page. Replace placeholders with your real business details when launching.</p></div>
+      <div style="display:grid;grid-template-columns:minmax(0,1fr) 380px;gap:28px;align-items:start;" class="contact-grid">
+        <section style="background:var(--color-surface);border:1px solid var(--color-border);border-radius:var(--radius-xl);padding:28px;box-shadow:var(--shadow-sm);">
+          <h2 style="font-size:22px;margin-bottom:6px;">Send a Demo Message</h2>
+          <p style="color:var(--color-text-muted);font-size:13px;margin-bottom:22px;">No message will be delivered to a real business inbox.</p>
+          <form id="contactForm" novalidate>
+            <div class="form-group"><label class="form-label" for="contactName">Name *</label><input class="form-input" id="contactName" type="text" placeholder="Your name" required></div>
+            <div class="form-group"><label class="form-label" for="contactEmail">Email *</label><input class="form-input" id="contactEmail" type="email" placeholder="you@example.com" required></div>
+            <div class="form-group"><label class="form-label" for="contactSubject">Subject *</label><input class="form-input" id="contactSubject" type="text" placeholder="Partnership, catering, feedback..." required></div>
+            <div class="form-group"><label class="form-label" for="contactMessage">Message *</label><textarea class="form-textarea" id="contactMessage" rows="6" placeholder="Write your message..." required></textarea></div>
+            <button class="btn btn-primary" type="submit">Submit Demo Message</button>
+            <p id="contactStatus" class="newsletter-status" aria-live="polite"></p>
+          </form>
+        </section>
+        <aside style="display:grid;gap:16px;">
+          <div class="why-card" style="text-align:left;"><div class="why-icon-box" style="margin:0 0 16px;">📍</div><h3 class="why-title">Address Placeholder</h3><p class="why-desc">Replace with your shop, cloud kitchen, or delivery outlet address.</p></div>
+          <div class="why-card" style="text-align:left;"><div class="why-icon-box" style="margin:0 0 16px;">📞</div><h3 class="why-title">Contact Placeholder</h3><p class="why-desc">Phone: +91 XXXXX XXXXX<br>Email: hello@yourbrand.example</p></div>
+          <div class="why-card" style="text-align:left;"><div class="why-icon-box" style="margin:0 0 16px;">⏰</div><h3 class="why-title">Opening Hours</h3><p class="why-desc">Monday - Sunday<br>11:00 AM - 11:00 PM placeholder</p></div>
+          <div class="why-card" style="text-align:left;"><div class="why-icon-box" style="margin:0 0 16px;">📱</div><h3 class="why-title">Social Links</h3><p class="why-desc">Instagram • Facebook • WhatsApp placeholders for future launch.</p></div>
+        </aside>
+      </div>
+    </div>
+  </main>
+  <footer class="site-footer"><div class="container footer-bottom"><p>© 2026 BiteCraft Demo.</p><p>Contact details are placeholders</p></div></footer>
+  <script src="js/data.js"></script><script src="js/main.js"></script><script src="js/contact.js"></script>
+</body>
+</html>

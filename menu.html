@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Menu | BiteCraft</title>
+  <meta name="description" content="Explore BiteCraft's editable demo menu with filters, search, sorting, customization, and cart integration." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <!-- Announcement Bar with Outlet Selector & Store Status -->
+  <div class="announcement-bar">
+    <div class="container" style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;">
+      <div style="display:flex;align-items:center;gap:10px;">
+        <span class="store-status-badge open">
+          <span class="status-pulse-dot"></span><span>Open Now (11 AM - 11 PM)</span>
+        </span>
+        <span class="announcement-badge">Menu Demo</span>
+        <span>Use filters to discover sandwiches, burgers, fries and beverages.</span>
+      </div>
+      <div style="display:flex;align-items:center;gap:8px;">
+        <span style="font-size:12px;opacity:0.9;">Outlet:</span>
+        <select class="outlet-select header-outlet-select" aria-label="Select delivery outlet">
+          <option value="downtown">📍 Metro Downtown Hub (20-30m)</option>
+          <option value="westside">📍 Westside Mall Express (30-40m)</option>
+          <option value="airport">📍 Airport Cloud Kitchen (35-45m)</option>
+        </select>
+      </div>
+    </div>
+  </div>
+
+  <header class="site-header">
+    <div class="container nav-container">
+      <a href="index.html" class="brand-logo"><div class="brand-icon">🥪</div><div class="brand-title">BiteCraft <span class="tagline-mini">Seriously Delicious</span></div></a>
+      <nav class="nav-menu" id="navMenu">
+        <a href="index.html" class="nav-link">Home</a>
+        <a href="menu.html" class="nav-link active">Menu</a>
+        <a href="combo.html" class="nav-link">Combos 🍱</a>
+        <a href="orders.html" class="nav-link">My Orders 📋</a>
+        <a href="about.html" class="nav-link">About Us</a>
+        <a href="contact.html" class="nav-link">Contact</a>
+        <a href="admin.html" class="nav-link">Dashboard Demo</a>
+      </nav>
+      <div class="nav-actions"><a href="menu.html" class="btn btn-primary">Order Now</a><button class="theme-toggle" type="button" aria-label="Toggle theme">🌙</button><button class="cart-btn-trigger" aria-label="Open cart">🛒 <span class="cart-badge">0</span></button><button class="mobile-menu-btn" id="mobileMenuToggle" aria-label="Toggle menu">☰</button></div>
+    </div>
+  </header>
+
+  <main>
+    <section style="padding:56px 0 28px;">
+      <div class="container">
+        <div class="section-header" style="margin-bottom:28px;">
+          <span class="section-tag">Editable Demo Menu</span>
+          <h1 class="section-title">Explore BiteCraft Menu</h1>
+          <p class="section-subtitle">Search, filter, sort, customize, and add demo items to your cart. Prices are demo values in Indian Rupees.</p>
+        </div>
+
+        <div style="background:var(--color-surface);border:1px solid var(--color-border);border-radius:var(--radius-xl);padding:18px;box-shadow:var(--shadow-sm);">
+          <div style="display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:12px;align-items:center;">
+            <input id="searchInput" class="form-input" type="search" placeholder="Search by item name, category, or flavor..." aria-label="Search menu items">
+            <select id="categoryFilter" class="form-select" aria-label="Filter by category">
+              <option value="All">All Items</option><option value="Sandwiches">Sandwiches</option><option value="Burgers">Burgers</option><option value="Pizza">Pizza</option><option value="Fries">Fries</option><option value="Wraps">Wraps</option><option value="Pasta">Pasta</option><option value="Momos">Momos</option><option value="Snacks">Snacks</option><option value="Beverages">Beverages</option><option value="Desserts">Desserts</option>
+            </select>
+            <select id="sortSelect" class="form-select" aria-label="Sort items"><option value="default">Sort: Featured</option><option value="price-asc">Price: Low to High</option><option value="price-desc">Price: High to Low</option><option value="name-asc">Name: A to Z</option></select>
+            <label style="display:flex;align-items:center;gap:8px;font-size:13px;font-weight:600;justify-content:center;background:var(--color-surface-alt);border-radius:var(--radius-md);padding:10px;"><input id="vegFilter" type="checkbox"> Vegetarian only</label>
+          </div>
+          <div style="display:grid;grid-template-columns:1fr auto auto;gap:16px;align-items:center;margin-top:14px;padding-top:14px;border-top:1px solid var(--color-border);" class="menu-extra-filters">
+            <div style="display:flex;align-items:center;gap:12px;">
+              <span style="font-size:13px;font-weight:600;color:var(--color-text-muted);">Max Budget:</span>
+              <input id="priceRange" type="range" min="0" max="350" step="10" value="0" style="flex:1;max-width:220px;" aria-label="Filter by maximum price">
+              <span id="priceRangeValue" style="font-size:13px;font-weight:700;">Any price</span>
+            </div>
+            <label style="display:flex;align-items:center;gap:8px;font-size:13px;font-weight:600;cursor:pointer;"><input id="favoritesFilter" type="checkbox"> Saved Favorites Only ♥</label>
+            <button class="btn btn-secondary btn-sm" type="button" onclick="BiteCraftMenu.resetFilters()">Reset Filters</button>
+          </div>
+          <div class="category-pills-wrap" id="categoryPills" style="margin-top:16px;"></div>
+          <div style="display:flex;justify-content:space-between;align-items:center;margin-top:12px;font-size:13px;color:var(--color-text-muted);"><span id="resultCount">0 items found</span><span>Coupon demo: <strong>BITE10</strong></span></div>
+        </div>
+      </div>
+    </section>
+
+    <section style="padding:28px 0 70px;">
+      <div class="container">
+        <div class="products-grid" id="productGrid"></div>
+        <div id="emptyState" class="empty-box" style="display:none;background:var(--color-surface);border:1px solid var(--color-border);border-radius:var(--radius-xl);margin-top:24px;"><div class="empty-icon">🔎</div><h2 class="empty-title">No matching bites found</h2><p class="empty-desc">Try a different keyword, remove vegetarian-only filter, or choose another category.</p></div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer"><div class="container footer-grid"><div><div class="footer-brand-title"><span>🥪</span> BiteCraft</div><p class="footer-desc">Premium frontend demo menu with searchable product data and cart integration.</p></div><div><h4 class="footer-heading">Navigation</h4><ul class="footer-links"><li><a href="index.html">Home</a></li><li><a href="menu.html">Menu</a></li><li><a href="combo.html">Combos</a></li><li><a href="orders.html">My Orders</a></li><li><a href="about.html">About</a></li><li><a href="contact.html">Contact</a></li><li><a href="cart.html">Cart</a></li></ul></div><div><h4 class="footer-heading">Popular</h4><ul class="footer-links"><li><a href="menu.html?category=Sandwiches">Sandwiches</a></li><li><a href="menu.html?category=Fries">Loaded Fries</a></li><li><a href="menu.html?category=Beverages">Beverages</a></li></ul></div><div><h4 class="footer-heading">Demo Notice</h4><p class="footer-desc">All products, ratings and prices are editable sample content. No real ordering occurs.</p></div></div><div class="container footer-bottom"><p>© 2026 BiteCraft Demo.</p><p>Frontend-only local demo</p></div></footer>
+
+  <script src="js/data.js"></script>
+  <script src="js/main.js"></script>
+  <script src="js/menu.js"></script>
+</body>
+</html>

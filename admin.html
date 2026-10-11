@@ -1,0 +1,259 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Admin Dashboard & Analytics | BiteCraft</title>
+  <meta name="description" content="Local admin dashboard for BiteCraft menu management, coupon control, sales analytics simulation, and JSON backup." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <div class="announcement-bar">
+    <div class="container" style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;">
+      <div style="display:flex;align-items:center;gap:10px;">
+        <span class="store-status-badge open">
+          <span class="status-pulse-dot"></span><span>Open Now (11 AM - 11 PM)</span>
+        </span>
+        <span class="announcement-badge">Local Only</span>
+        <span>Frontend demo stored in your browser localStorage. Not secure admin software.</span>
+      </div>
+      <div style="display:flex;align-items:center;gap:8px;">
+        <span style="font-size:12px;opacity:0.9;">Outlet:</span>
+        <select class="outlet-select header-outlet-select" aria-label="Select delivery outlet">
+          <option value="downtown">📍 Metro Downtown Hub (20-30m)</option>
+          <option value="westside">📍 Westside Mall Express (30-40m)</option>
+          <option value="airport">📍 Airport Cloud Kitchen (35-45m)</option>
+        </select>
+      </div>
+    </div>
+  </div>
+
+  <header class="site-header">
+    <div class="container nav-container">
+      <a href="index.html" class="brand-logo">
+        <div class="brand-icon">🥪</div>
+        <div class="brand-title">BiteCraft <span class="tagline-mini">Seriously Delicious</span></div>
+      </a>
+      <nav class="nav-menu" id="navMenu">
+        <a href="index.html" class="nav-link">Home</a>
+        <a href="menu.html" class="nav-link">Menu</a>
+        <a href="combo.html" class="nav-link">Combos 🍱</a>
+        <a href="orders.html" class="nav-link">My Orders 📋</a>
+        <a href="about.html" class="nav-link">About Us</a>
+        <a href="contact.html" class="nav-link">Contact</a>
+        <a href="admin.html" class="nav-link active">Dashboard Demo</a>
+      </nav>
+      <div class="nav-actions">
+        <a href="menu.html" class="btn btn-primary">Order Now</a>
+        <button class="theme-toggle" type="button" aria-label="Toggle theme">🌙</button>
+        <button class="cart-btn-trigger" aria-label="Open cart">🛒 <span class="cart-badge">0</span></button>
+        <button class="mobile-menu-btn" id="mobileMenuToggle" aria-label="Toggle menu">☰</button>
+      </div>
+    </div>
+  </header>
+
+  <main style="padding: 44px 0 80px;">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">Business Control Center</span>
+        <h1 class="section-title">BiteCraft Admin & Analytics</h1>
+        <p class="section-subtitle">Manage products, coupon discounts, inspect simulated sales analytics, and export/import menu JSON backups.</p>
+      </div>
+
+      <!-- Admin Tab Navigation -->
+      <div class="admin-tab-nav" role="tablist">
+        <button class="admin-tab-btn active" onclick="BiteCraftAdmin.switchTab('products')" id="tabBtnProducts" role="tab" aria-selected="true">
+          🍔 Menu Products
+        </button>
+        <button class="admin-tab-btn" onclick="BiteCraftAdmin.switchTab('coupons')" id="tabBtnCoupons" role="tab" aria-selected="false">
+          🎟️ Coupon Management
+        </button>
+        <button class="admin-tab-btn" onclick="BiteCraftAdmin.switchTab('analytics')" id="tabBtnAnalytics" role="tab" aria-selected="false">
+          📊 Sales Analytics
+        </button>
+        <button class="admin-tab-btn" onclick="BiteCraftAdmin.switchTab('backup')" id="tabBtnBackup" role="tab" aria-selected="false">
+          💾 JSON Export / Import
+        </button>
+      </div>
+
+      <!-- TAB 1: Products Management -->
+      <div class="admin-tab-content active" id="tabContentProducts">
+        <section class="why-us-grid" id="adminStats" style="margin-bottom:28px;"></section>
+
+        <section style="display:grid;grid-template-columns:390px minmax(0,1fr);gap:24px;align-items:start;" class="admin-grid">
+          <aside style="background:var(--color-surface);border:1px solid var(--color-border);border-radius:var(--radius-xl);padding:24px;box-shadow:var(--shadow-sm);position:sticky;top:98px;">
+            <h2 id="adminFormTitle" style="font-size:22px;margin-bottom:8px;">Add Demo Product</h2>
+            <p style="font-size:12px;color:var(--color-text-muted);margin-bottom:18px;">Menu changes are saved only in this browser.</p>
+            <form id="productForm" novalidate>
+              <input type="hidden" id="productId">
+              <div class="form-group"><label class="form-label" for="productName">Product Name *</label><input id="productName" class="form-input" type="text" required placeholder="e.g. Corn Cheese Sandwich"></div>
+              <div class="form-group"><label class="form-label" for="productCategory">Category *</label><select id="productCategory" class="form-select" required><option value="Sandwiches">Sandwiches</option><option value="Burgers">Burgers</option><option value="Pizza">Pizza</option><option value="Fries">Fries</option><option value="Wraps">Wraps</option><option value="Pasta">Pasta</option><option value="Momos">Momos</option><option value="Snacks">Snacks</option><option value="Beverages">Beverages</option><option value="Desserts">Desserts</option></select></div>
+              <div class="form-group"><label class="form-label" for="productPrice">Demo Price (₹) *</label><input id="productPrice" class="form-input" type="number" min="1" step="1" required placeholder="149"></div>
+              <div class="form-group"><label class="form-label" for="productDescription">Description *</label><textarea id="productDescription" class="form-textarea" rows="3" required placeholder="Short appetizing description"></textarea></div>
+              <div class="form-group"><label class="form-label" for="productImage">Image URL</label><input id="productImage" class="form-input" type="url" placeholder="https://..."></div>
+              <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;">
+                <div class="form-group"><label class="form-label" for="productCalories">Calories (kcal)</label><input id="productCalories" class="form-input" type="number" placeholder="420"></div>
+                <div class="form-group"><label class="form-label" for="productSpice">Spice Level (0-3)</label><select id="productSpice" class="form-select"><option value="0">0 - None</option><option value="1">1 - Mild</option><option value="2">2 - Medium</option><option value="3">3 - Fiery</option></select></div>
+              </div>
+              <div style="display:grid;gap:8px;margin:14px 0;">
+                <label style="display:flex;gap:8px;align-items:center;font-size:13px;font-weight:600;"><input type="checkbox" id="productVeg" checked> Vegetarian item</label>
+                <label style="display:flex;gap:8px;align-items:center;font-size:13px;font-weight:600;"><input type="checkbox" id="productBest"> Mark as bestseller</label>
+                <label style="display:flex;gap:8px;align-items:center;font-size:13px;font-weight:600;"><input type="checkbox" id="productAvailable" checked> Available on menu</label>
+              </div>
+              <div style="display:flex;gap:10px;flex-wrap:wrap;">
+                <button id="productSubmitBtn" class="btn btn-primary" type="submit">Add Product</button>
+                <button class="btn btn-secondary" type="button" onclick="BiteCraftAdmin.clearForm()">Clear</button>
+              </div>
+            </form>
+          </aside>
+
+          <section>
+            <div style="background:var(--color-surface);border:1px solid var(--color-border);border-radius:var(--radius-xl);padding:18px;margin-bottom:18px;">
+              <div style="display:grid;grid-template-columns:2fr 1fr auto;gap:12px;align-items:center;">
+                <input id="adminSearch" class="form-input" type="search" placeholder="Search local products...">
+                <select id="adminFilterCategory" class="form-select"></select>
+                <button class="btn btn-secondary" type="button" onclick="BiteCraftAdmin.resetDefaults()">Reset Defaults</button>
+              </div>
+            </div>
+            <div id="adminProductList"></div>
+          </section>
+        </section>
+      </div>
+
+      <!-- TAB 2: Coupon Management -->
+      <div class="admin-tab-content" id="tabContentCoupons" style="display:none;">
+        <section style="display:grid;grid-template-columns:380px minmax(0,1fr);gap:24px;align-items:start;" class="admin-grid">
+          <!-- Add Coupon Form -->
+          <div style="background:var(--color-surface);border:1px solid var(--color-border);border-radius:var(--radius-xl);padding:24px;box-shadow:var(--shadow-sm);">
+            <h2 style="font-size:22px;margin-bottom:8px;">Create Promo Coupon</h2>
+            <p style="font-size:12px;color:var(--color-text-muted);margin-bottom:18px;">Codes can be applied in the cart drawer and checkout.</p>
+            <form id="couponForm" onsubmit="BiteCraftAdmin.saveCoupon(event)">
+              <div class="form-group">
+                <label class="form-label" for="couponCode">Coupon Code *</label>
+                <input id="couponCode" class="form-input" type="text" style="text-transform:uppercase;" placeholder="e.g. YUMMY30" required>
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="couponType">Discount Type *</label>
+                <select id="couponType" class="form-select" required>
+                  <option value="percent">Percentage (%) OFF</option>
+                  <option value="flat">Flat Rupee (₹) OFF</option>
+                  <option value="delivery">Free Delivery Discount</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="couponValue">Discount Value *</label>
+                <input id="couponValue" class="form-input" type="number" min="1" step="1" placeholder="e.g. 20 (for 20% or ₹20)" required>
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="couponMinOrder">Minimum Order (₹) *</label>
+                <input id="couponMinOrder" class="form-input" type="number" min="0" step="1" placeholder="e.g. 299" required>
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="couponLabel">Label / Description *</label>
+                <input id="couponLabel" class="form-input" type="text" placeholder="e.g. 20% OFF on orders above ₹299" required>
+              </div>
+              <button class="btn btn-primary" type="submit" style="width:100%;">Create Coupon</button>
+            </form>
+          </div>
+
+          <!-- Active Coupons List -->
+          <div>
+            <div style="background:var(--color-surface);border:1px solid var(--color-border);border-radius:var(--radius-xl);padding:20px;margin-bottom:18px;">
+              <h3 style="font-size:18px;font-weight:700;margin-bottom:4px;">Active Coupons Tray</h3>
+              <p style="font-size:13px;color:var(--color-text-muted);">These codes appear in the cart drawer and are validated at checkout.</p>
+            </div>
+            <div id="adminCouponsList"></div>
+          </div>
+        </section>
+      </div>
+
+      <!-- TAB 3: Sales Analytics Simulation -->
+      <div class="admin-tab-content" id="tabContentAnalytics" style="display:none;">
+        <!-- KPI Metrics Grid -->
+        <div class="why-us-grid" id="analyticsKpis" style="margin-bottom:28px;"></div>
+
+        <!-- Charts Grid -->
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-bottom:28px;" class="admin-grid">
+          <!-- Chart 1: Revenue by Category -->
+          <div style="background:var(--color-surface);border:1px solid var(--color-border);border-radius:var(--radius-xl);padding:24px;box-shadow:var(--shadow-sm);">
+            <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:16px;">
+              <div>
+                <h3 style="font-size:18px;font-weight:700;">Revenue by Category</h3>
+                <p style="font-size:12px;color:var(--color-text-muted);">Simulated sales volume across menu categories</p>
+              </div>
+              <span class="hero-pill">₹ Sales Share</span>
+            </div>
+            <canvas id="categoryChart" width="480" height="260" style="width:100%;height:auto;border-radius:var(--radius-md);"></canvas>
+          </div>
+
+          <!-- Chart 2: Top Selling Items -->
+          <div style="background:var(--color-surface);border:1px solid var(--color-border);border-radius:var(--radius-xl);padding:24px;box-shadow:var(--shadow-sm);">
+            <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:16px;">
+              <div>
+                <h3 style="font-size:18px;font-weight:700;">Top 5 Bestsellers by Volume</h3>
+                <p style="font-size:12px;color:var(--color-text-muted);">Most frequently ordered items</p>
+              </div>
+              <span class="hero-pill">Units Sold</span>
+            </div>
+            <canvas id="bestsellerChart" width="480" height="260" style="width:100%;height:auto;border-radius:var(--radius-md);"></canvas>
+          </div>
+        </div>
+
+        <!-- Recent Simulated Orders Table -->
+        <div style="background:var(--color-surface);border:1px solid var(--color-border);border-radius:var(--radius-xl);padding:24px;box-shadow:var(--shadow-sm);">
+          <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:16px;">
+            <h3 style="font-size:18px;font-weight:700;">Recent Order Transactions</h3>
+            <span style="font-size:12px;color:var(--color-text-muted);">Synced from browser order store</span>
+          </div>
+          <div id="analyticsRecentOrdersTable" style="overflow-x:auto;"></div>
+        </div>
+      </div>
+
+      <!-- TAB 4: JSON Export / Import -->
+      <div class="admin-tab-content" id="tabContentBackup" style="display:none;">
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:24px;" class="admin-grid">
+          <!-- Export Card -->
+          <div style="background:var(--color-surface);border:1px solid var(--color-border);border-radius:var(--radius-xl);padding:28px;box-shadow:var(--shadow-sm);">
+            <div style="font-size:36px;margin-bottom:12px;">📤</div>
+            <h3 style="font-size:20px;font-weight:700;margin-bottom:8px;">Export Menu to JSON</h3>
+            <p style="font-size:13px;color:var(--color-text-muted);margin-bottom:20px;">
+              Download a full backup of all current menu products, customizations, nutritional info, and pricing as a formatted JSON file.
+            </p>
+            <button class="btn btn-primary" onclick="BiteCraftAdmin.exportMenuJson()">
+              Download bitecraft-menu.json ⬇
+            </button>
+          </div>
+
+          <!-- Import Card -->
+          <div style="background:var(--color-surface);border:1px solid var(--color-border);border-radius:var(--radius-xl);padding:28px;box-shadow:var(--shadow-sm);">
+            <div style="font-size:36px;margin-bottom:12px;">📥</div>
+            <h3 style="font-size:20px;font-weight:700;margin-bottom:8px;">Import Menu from JSON</h3>
+            <p style="font-size:13px;color:var(--color-text-muted);margin-bottom:20px;">
+              Restore or replace menu items by uploading a valid BiteCraft JSON file. Validates product schema before saving.
+            </p>
+            <input type="file" id="importJsonFileInput" accept=".json,application/json" style="display:none;" onchange="BiteCraftAdmin.handleImportFile(event)">
+            <button class="btn btn-secondary" onclick="document.getElementById('importJsonFileInput').click()">
+              Choose JSON File to Import ⬆
+            </button>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-bottom">
+      <p>© 2026 BiteCraft Demo.</p>
+      <p>LocalStorage dashboard — not production admin software</p>
+    </div>
+  </footer>
+
+  <script src="js/data.js"></script>
+  <script src="js/main.js"></script>
+  <script src="js/admin.js"></script>
+</body>
+</html>

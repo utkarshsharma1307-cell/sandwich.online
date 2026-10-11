@@ -1,0 +1,225 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>BiteCraft | Freshly Made. Seriously Delicious.</title>
+  <meta name="description" content="Premium fast-food demo website for sandwiches, burgers, fries, pizza, beverages and more." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <!-- Announcement Bar with Outlet Selector & Store Status -->
+  <div class="announcement-bar">
+    <div class="container" style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;">
+      <div style="display:flex;align-items:center;gap:10px;">
+        <span class="store-status-badge open">
+          <span class="status-pulse-dot"></span><span>Open Now (11 AM - 11 PM)</span>
+        </span>
+        <span class="announcement-badge">Fresh Demo</span>
+        <span>Freshly made, just for you! Explore our delicious menu.</span>
+      </div>
+      <div style="display:flex;align-items:center;gap:8px;">
+        <span style="font-size:12px;opacity:0.9;">Outlet:</span>
+        <select class="outlet-select header-outlet-select" aria-label="Select delivery outlet">
+          <option value="downtown">📍 Metro Downtown Hub (20-30m)</option>
+          <option value="westside">📍 Westside Mall Express (30-40m)</option>
+          <option value="airport">📍 Airport Cloud Kitchen (35-45m)</option>
+        </select>
+      </div>
+    </div>
+  </div>
+
+  <!-- Header -->
+  <header class="site-header">
+    <div class="container nav-container">
+      <a href="index.html" class="brand-logo" aria-label="BiteCraft home">
+        <div class="brand-icon">🥪</div>
+        <div class="brand-title">BiteCraft <span class="tagline-mini">Seriously Delicious</span></div>
+      </a>
+      <nav class="nav-menu" id="navMenu" aria-label="Main navigation">
+        <a href="index.html" class="nav-link active">Home</a>
+        <a href="menu.html" class="nav-link">Menu</a>
+        <a href="combo.html" class="nav-link">Combos 🍱</a>
+        <a href="orders.html" class="nav-link">My Orders 📋</a>
+        <a href="about.html" class="nav-link">About Us</a>
+        <a href="contact.html" class="nav-link">Contact</a>
+        <a href="admin.html" class="nav-link">Dashboard Demo</a>
+      </nav>
+      <div class="nav-actions">
+        <a href="menu.html" class="btn btn-primary">Order Now</a>
+        <button class="theme-toggle" type="button" aria-label="Toggle theme">🌙</button>
+        <button class="cart-btn-trigger" aria-label="Open shopping cart">
+          🛒 <span class="cart-badge">0</span>
+        </button>
+        <button class="mobile-menu-btn" id="mobileMenuToggle" aria-label="Toggle mobile menu">☰</button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- Hero Section -->
+    <section class="hero-section">
+      <div class="container hero-grid">
+        <div class="hero-content">
+          <div class="hero-pill">🔥 Freshly Made • Demo Menu Prices</div>
+          <h1 class="hero-title">Good Food. <span class="text-highlight">Great Mood.</span></h1>
+          <p class="hero-description">From cheesy grilled sandwiches to loaded fries and refreshing drinks, discover your next favorite bite at BiteCraft.</p>
+          <div class="hero-actions">
+            <a href="menu.html" class="btn btn-primary btn-lg">Explore Menu →</a>
+            <button class="btn btn-secondary btn-lg" onclick="BiteCraft.openCartDrawer()">Order Now 🛒</button>
+          </div>
+          <div class="hero-features">
+            <div class="hero-feat-item"><span class="hero-feat-icon">✓</span> Freshly Prepared</div>
+            <div class="hero-feat-item"><span class="hero-feat-icon">✓</span> Made with Care</div>
+            <div class="hero-feat-item"><span class="hero-feat-icon">✓</span> Big Flavors</div>
+          </div>
+        </div>
+        <div class="hero-visual">
+          <div class="hero-main-card">
+            <img class="hero-main-img" src="https://images.unsplash.com/photo-1543353071-873f17a7a088?auto=format&fit=crop&w=900&q=85" alt="Premium sandwiches, fries and fresh fast-food spread" onerror="this.src='https://images.unsplash.com/photo-1528735602780-2552fd46c7af?auto=format&fit=crop&w=900&q=85'" />
+          </div>
+          <div class="floating-badge badge-top-right">
+            <span class="float-icon">🥬</span>
+            <div class="float-text"><h4>Fresh Prep</h4><p>Made to order</p></div>
+          </div>
+          <div class="floating-badge badge-bottom-left">
+            <span class="float-icon">🧀</span>
+            <div class="float-text"><h4>Cheese-Loaded</h4><p>Signature favorites</p></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Featured Categories -->
+    <section class="categories-section">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-tag">Explore Food</span>
+          <h2 class="section-title">Featured Categories</h2>
+          <p class="section-subtitle">Jump straight into sandwiches, loaded sides, drinks, and more.</p>
+        </div>
+        <div class="category-card-grid">
+          <a class="cat-card-item" href="menu.html?category=Sandwiches"><span class="cat-card-icon">🥪</span><span class="cat-card-name">Sandwiches</span></a>
+          <a class="cat-card-item" href="menu.html?category=Burgers"><span class="cat-card-icon">🍔</span><span class="cat-card-name">Burgers</span></a>
+          <a class="cat-card-item" href="menu.html?category=Fries"><span class="cat-card-icon">🍟</span><span class="cat-card-name">Fries</span></a>
+          <a class="cat-card-item" href="menu.html?category=Pizza"><span class="cat-card-icon">🍕</span><span class="cat-card-name">Pizza</span></a>
+          <a class="cat-card-item" href="menu.html?category=Wraps"><span class="cat-card-icon">🌯</span><span class="cat-card-name">Wraps</span></a>
+          <a class="cat-card-item" href="menu.html?category=Beverages"><span class="cat-card-icon">🥤</span><span class="cat-card-name">Beverages</span></a>
+          <a class="cat-card-item" href="menu.html?category=Snacks"><span class="cat-card-icon">🧄</span><span class="cat-card-name">Snacks</span></a>
+          <a class="cat-card-item" href="menu.html?category=Desserts"><span class="cat-card-icon">🍫</span><span class="cat-card-name">Desserts</span></a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Best Sellers -->
+    <section style="padding: 60px 0;">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-tag">Popular Picks</span>
+          <h2 class="section-title">Best Sellers</h2>
+          <p class="section-subtitle">Sample demo items curated to showcase a real ordering experience.</p>
+        </div>
+        <div class="products-grid" id="bestSellersGrid"></div>
+      </div>
+    </section>
+
+    <!-- Saved Favorites Preview -->
+    <section id="favoritesPreviewSection" style="padding: 0 0 60px; display: none;">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-tag">Your Saved Bites</span>
+          <h2 class="section-title">Saved Favorites</h2>
+          <p class="section-subtitle">Items you have pinned using the favorite button.</p>
+        </div>
+        <div class="products-grid" id="favoritesPreviewGrid"></div>
+      </div>
+    </section>
+
+    <!-- Promo Banner -->
+    <section class="container">
+      <div class="promo-banner">
+        <div class="promo-grid">
+          <div>
+            <span class="promo-tag">Value Box Builder</span>
+            <h2 class="promo-title">Your Favorite Bites, Better Together.</h2>
+            <p class="promo-desc">Pair a grilled sandwich with loaded fries and a chilled coffee for a premium snack experience. Save 15% with our interactive combo builder!</p>
+            <a href="combo.html" class="btn btn-primary btn-lg">Build Your Box 🍱</a>
+          </div>
+          <div style="font-size:92px;text-align:center;line-height:1;">🥪🍟🥤</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Why Choose Us -->
+    <section style="padding: 40px 0 60px;">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-tag">Why BiteCraft</span>
+          <h2 class="section-title">Built for Every Craving</h2>
+        </div>
+        <div class="why-us-grid">
+          <div class="why-card"><div class="why-icon-box">🍳</div><h3 class="why-title">Freshly Prepared</h3><p class="why-desc">Designed around made-to-order snacks, sandwiches, and beverages.</p></div>
+          <div class="why-card"><div class="why-icon-box">🌶️</div><h3 class="why-title">Flavorful Ingredients</h3><p class="why-desc">Menu copy focuses on bold sauces, textures, and Indian street-food favorites.</p></div>
+          <div class="why-card"><div class="why-icon-box">🍽️</div><h3 class="why-title">Variety for Every Craving</h3><p class="why-desc">From veggie club sandwiches to crispy chicken burgers and thick shakes.</p></div>
+          <div class="why-card"><div class="why-icon-box">⚡</div><h3 class="why-title">Easy Ordering</h3><p class="why-desc">Frontend cart, customizations, coupon demo, and checkout simulation.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section style="padding: 60px 0;background:var(--color-surface-alt);">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-tag">Demo Testimonials</span>
+          <h2 class="section-title">Sample Customer Stories</h2>
+          <p class="section-subtitle">These testimonials are clearly labeled demonstration content, not verified customer reviews.</p>
+        </div>
+        <div class="testimonials-grid">
+          <article class="testimonial-card"><div class="testimonial-stars">★★★★★</div><p class="testimonial-quote">“The cheese-loaded sandwich demo feels premium and the customization options are super clear.”</p><div class="testimonial-author"><div class="author-avatar">DL</div><div class="author-info"><h4>Demo Luncher</h4><p>Sample testimonial</p></div></div></article>
+          <article class="testimonial-card"><div class="testimonial-stars">★★★★★</div><p class="testimonial-quote">“Loaded fries plus cold coffee is exactly the kind of combo this brand should promote.”</p><div class="testimonial-author"><div class="author-avatar">SF</div><div class="author-info"><h4>Snack Fan</h4><p>Sample testimonial</p></div></div></article>
+          <article class="testimonial-card"><div class="testimonial-stars">★★★★★</div><p class="testimonial-quote">“The design looks like a real fast-food startup, not a basic template.”</p><div class="testimonial-author"><div class="author-avatar">FD</div><div class="author-info"><h4>Foodie Demo</h4><p>Sample testimonial</p></div></div></article>
+        </div>
+      </div>
+    </section>
+
+    <!-- About Preview + Newsletter -->
+    <section style="padding: 70px 0;">
+      <div class="container">
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:32px;align-items:center;">
+          <div>
+            <span class="section-tag">About BiteCraft</span>
+            <h2 class="section-title" style="text-align:left;">Freshly Made. Seriously Delicious.</h2>
+            <p style="color:var(--color-text-muted);margin-bottom:22px;">BiteCraft is a modern editable food-brand demo for sandwiches, burgers, wraps, fries, beverages, and desserts. It is designed as a polished starting point for a real food business website.</p>
+            <a href="about.html" class="btn btn-secondary">Read Our Story</a>
+          </div>
+          <div class="newsletter-card" style="margin:0;">
+            <h2 class="section-title" style="font-size:24px;">Join the BiteClub</h2>
+            <p class="section-subtitle">Subscribe to receive simulated demo updates. No email is sent or stored on a server.</p>
+            <form class="newsletter-form" id="newsletterForm">
+              <input class="newsletter-input" id="newsletterEmail" type="email" placeholder="you@example.com" aria-label="Email address" required>
+              <button class="btn btn-primary" type="submit">Subscribe</button>
+            </form>
+            <p id="newsletterStatus" class="newsletter-status" aria-live="polite"></p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-grid">
+      <div><div class="footer-brand-title"><span>🥪</span> BiteCraft</div><p class="footer-desc">Premium fast-food demo website for sandwiches, loaded fries, burgers, wraps, and beverages. Freshly Made. Seriously Delicious.</p><p style="font-size:12px;color:#a8a29e;">All prices, products, contact details, and testimonials are editable demo content.</p></div>
+      <div><h4 class="footer-heading">Navigation</h4><ul class="footer-links"><li><a href="index.html">Home</a></li><li><a href="menu.html">Menu</a></li><li><a href="combo.html">Combos</a></li><li><a href="orders.html">My Orders</a></li><li><a href="about.html">About Us</a></li><li><a href="contact.html">Contact</a></li></ul></div>
+      <div><h4 class="footer-heading">Menu</h4><ul class="footer-links"><li><a href="menu.html?category=Sandwiches">Sandwiches</a></li><li><a href="menu.html?category=Burgers">Burgers</a></li><li><a href="menu.html?category=Fries">Loaded Fries</a></li><li><a href="menu.html?category=Beverages">Beverages</a></li></ul></div>
+      <div><h4 class="footer-heading">Contact Placeholder</h4><div class="footer-info-row">📍 Replace with your shop address</div><div class="footer-info-row">📞 +91 XXXXX XXXXX</div><div class="footer-info-row">⏰ Opening hours placeholder</div><div class="footer-info-row">📱 Social media placeholders</div></div>
+    </div>
+    <div class="container footer-bottom"><p>© 2026 BiteCraft Demo. All rights reserved.</p><p>Frontend demo • No real orders or payments</p></div>
+  </footer>
+
+  <script src="js/data.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>

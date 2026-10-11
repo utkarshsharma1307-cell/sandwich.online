@@ -1,0 +1,215 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Build Your Box — Combo Meal Builder | BiteCraft</title>
+  <meta name="description" content="Build your custom meal combo at BiteCraft. Pick 1 Main + 1 Side + 1 Drink at an exclusive 15% bundled discount." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <!-- Announcement Bar with Outlet Selector & Store Status -->
+  <div class="announcement-bar">
+    <div class="container" style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;">
+      <div style="display:flex;align-items:center;gap:10px;">
+        <span class="store-status-badge open">
+          <span class="status-pulse-dot"></span><span>Open Now (11 AM - 11 PM)</span>
+        </span>
+        <span class="announcement-badge">Bundle & Save 15%</span>
+      </div>
+      <div style="display:flex;align-items:center;gap:8px;">
+        <span style="font-size:12px;opacity:0.9;">Outlet:</span>
+        <select class="outlet-select header-outlet-select" aria-label="Select delivery outlet">
+          <option value="downtown">📍 Metro Downtown Hub (20-30m)</option>
+          <option value="westside">📍 Westside Mall Express (30-40m)</option>
+          <option value="airport">📍 Airport Cloud Kitchen (35-45m)</option>
+        </select>
+      </div>
+    </div>
+  </div>
+
+  <!-- Header -->
+  <header class="site-header">
+    <div class="container nav-container">
+      <a href="index.html" class="brand-logo" aria-label="BiteCraft home">
+        <div class="brand-icon">🥪</div>
+        <div class="brand-title">BiteCraft <span class="tagline-mini">Seriously Delicious</span></div>
+      </a>
+      <nav class="nav-menu" id="navMenu" aria-label="Main navigation">
+        <a href="index.html" class="nav-link">Home</a>
+        <a href="menu.html" class="nav-link">Menu</a>
+        <a href="combo.html" class="nav-link active">Combos 🍱</a>
+        <a href="orders.html" class="nav-link">My Orders 📋</a>
+        <a href="about.html" class="nav-link">About Us</a>
+        <a href="contact.html" class="nav-link">Contact</a>
+        <a href="admin.html" class="nav-link">Dashboard Demo</a>
+      </nav>
+      <div class="nav-actions">
+        <a href="menu.html" class="btn btn-primary">Order Now</a>
+        <button class="theme-toggle" type="button" aria-label="Toggle theme">🌙</button>
+        <button class="cart-btn-trigger" aria-label="Open shopping cart">
+          🛒 <span class="cart-badge">0</span>
+        </button>
+        <button class="mobile-menu-btn" id="mobileMenuToggle" aria-label="Toggle mobile menu">☰</button>
+      </div>
+    </div>
+  </header>
+
+  <main style="padding: 48px 0 80px;">
+    <div class="container">
+      <div class="section-header" style="text-align:center;max-width:720px;margin:0 auto 36px;">
+        <span class="section-tag">Value Box Builder</span>
+        <h1 class="section-title">Build Your Box 🍱</h1>
+        <p class="section-subtitle">Pick 1 Signature Main + 1 Loaded Side + 1 Chilled Beverage to unlock an instant <strong>15% Bundle Discount</strong>!</p>
+      </div>
+
+      <div class="combo-builder-layout">
+        <!-- Selection Area -->
+        <div class="combo-steps-area">
+          <!-- Step 1: Main -->
+          <section class="combo-step-section" id="stepMain">
+            <div class="combo-step-header">
+              <div class="combo-step-badge">1</div>
+              <div>
+                <h2 class="combo-step-title">Choose Your Main (Sandwich or Burger)</h2>
+                <p class="combo-step-sub">Select 1 item as the heart of your box</p>
+              </div>
+            </div>
+            <div class="combo-options-grid" id="comboMainsGrid"></div>
+          </section>
+
+          <!-- Step 2: Side -->
+          <section class="combo-step-section" id="stepSide">
+            <div class="combo-step-header">
+              <div class="combo-step-badge">2</div>
+              <div>
+                <h2 class="combo-step-title">Choose Your Side (Fries or Snacks)</h2>
+                <p class="combo-step-sub">Select 1 crunchy, savory companion</p>
+              </div>
+            </div>
+            <div class="combo-options-grid" id="comboSidesGrid"></div>
+          </section>
+
+          <!-- Step 3: Beverage -->
+          <section class="combo-step-section" id="stepDrink">
+            <div class="combo-step-header">
+              <div class="combo-step-badge">3</div>
+              <div>
+                <h2 class="combo-step-title">Choose Your Beverage</h2>
+                <p class="combo-step-sub">Select 1 refreshing drink or thick shake</p>
+              </div>
+            </div>
+            <div class="combo-options-grid" id="comboDrinksGrid"></div>
+          </section>
+        </div>
+
+        <!-- Sticky Box Summary Sidebar -->
+        <aside class="combo-summary-sidebar">
+          <div class="combo-box-card">
+            <div class="combo-box-header">
+              <div style="font-size:28px;">🍱</div>
+              <div>
+                <h3 style="font-size:18px;font-weight:800;">Your Custom Box</h3>
+                <span class="combo-savings-pill">15% BUNDLE SAVINGS</span>
+              </div>
+            </div>
+
+            <div class="combo-selected-slots">
+              <!-- Slot 1 -->
+              <div class="combo-slot" id="slotMain">
+                <div class="slot-label">1. Main</div>
+                <div class="slot-content">
+                  <span class="slot-empty-text">Select a Sandwich or Burger</span>
+                </div>
+              </div>
+              <!-- Slot 2 -->
+              <div class="combo-slot" id="slotSide">
+                <div class="slot-label">2. Side</div>
+                <div class="slot-content">
+                  <span class="slot-empty-text">Select Fries or Snack</span>
+                </div>
+              </div>
+              <!-- Slot 3 -->
+              <div class="combo-slot" id="slotDrink">
+                <div class="slot-label">3. Drink</div>
+                <div class="slot-content">
+                  <span class="slot-empty-text">Select a Beverage</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Price Breakdown -->
+            <div class="combo-pricing-box">
+              <div class="combo-price-row">
+                <span>Individual Total</span>
+                <span id="comboOriginalTotal">₹0</span>
+              </div>
+              <div class="combo-price-row discount" id="comboDiscountRow" style="display:none;">
+                <span>Combo Savings (15%)</span>
+                <span id="comboDiscountAmount">-₹0</span>
+              </div>
+              <div class="combo-price-row final">
+                <span>Bundle Price</span>
+                <span id="comboFinalTotal" style="color:var(--color-primary);font-size:22px;font-weight:800;">₹0</span>
+              </div>
+            </div>
+
+            <button class="btn btn-primary" id="comboAddBtn" style="width:100%;margin-top:16px;" onclick="BiteCraftCombo.addComboToCart()" disabled>
+              Complete Box to Add ➔
+            </button>
+            <button class="btn btn-secondary" style="width:100%;margin-top:10px;" onclick="BiteCraftCombo.resetBox()">
+              Reset Box Selection
+            </button>
+
+            <p style="font-size:12px;color:var(--color-text-muted);margin-top:14px;text-align:center;">
+              Demo bundle pricing. Persisted in your browser cart.
+            </p>
+          </div>
+        </aside>
+      </div>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-grid">
+      <div>
+        <div class="footer-brand-title"><span>🥪</span> BiteCraft</div>
+        <p class="footer-desc">Premium fast-food demo website for sandwiches, loaded fries, burgers, wraps, and beverages.</p>
+      </div>
+      <div>
+        <h4 class="footer-heading">Navigation</h4>
+        <ul class="footer-links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="menu.html">Menu</a></li>
+          <li><a href="combo.html">Combos</a></li>
+          <li><a href="orders.html">My Orders</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="footer-heading">Categories</h4>
+        <ul class="footer-links">
+          <li><a href="menu.html?category=Sandwiches">Sandwiches</a></li>
+          <li><a href="menu.html?category=Burgers">Burgers</a></li>
+          <li><a href="menu.html?category=Fries">Fries & Sides</a></li>
+          <li><a href="menu.html?category=Beverages">Beverages</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="footer-heading">Demo Notice</h4>
+        <p class="footer-desc">BiteCraft is an interactive frontend demo. No real transactions or orders are processed.</p>
+      </div>
+    </div>
+    <div class="container footer-bottom">
+      <p>© 2026 BiteCraft Demo.</p>
+      <p>Frontend Demonstration</p>
+    </div>
+  </footer>
+
+  <script src="js/data.js"></script>
+  <script src="js/main.js"></script>
+  <script src="js/combo.js"></script>
+</body>
+</html>

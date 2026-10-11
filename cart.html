@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Cart | BiteCraft</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet"><link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <!-- Announcement Bar with Outlet Selector & Store Status -->
+  <div class="announcement-bar">
+    <div class="container" style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;">
+      <div style="display:flex;align-items:center;gap:10px;">
+        <span class="store-status-badge open">
+          <span class="status-pulse-dot"></span><span>Open Now (11 AM - 11 PM)</span>
+        </span>
+        <span class="announcement-badge">Review Cart</span>
+      </div>
+      <div style="display:flex;align-items:center;gap:8px;">
+        <span style="font-size:12px;opacity:0.9;">Outlet:</span>
+        <select class="outlet-select header-outlet-select" aria-label="Select delivery outlet">
+          <option value="downtown">📍 Metro Downtown Hub (20-30m)</option>
+          <option value="westside">📍 Westside Mall Express (30-40m)</option>
+          <option value="airport">📍 Airport Cloud Kitchen (35-45m)</option>
+        </select>
+      </div>
+    </div>
+  </div>
+
+  <header class="site-header">
+    <div class="container nav-container">
+      <a href="index.html" class="brand-logo">
+        <div class="brand-icon">🥪</div>
+        <div class="brand-title">BiteCraft <span class="tagline-mini">Seriously Delicious</span></div>
+      </a>
+      <nav class="nav-menu" id="navMenu">
+        <a href="index.html" class="nav-link">Home</a>
+        <a href="menu.html" class="nav-link">Menu</a>
+        <a href="combo.html" class="nav-link">Combos 🍱</a>
+        <a href="orders.html" class="nav-link">My Orders 📋</a>
+        <a href="about.html" class="nav-link">About Us</a>
+        <a href="contact.html" class="nav-link">Contact</a>
+        <a href="admin.html" class="nav-link">Dashboard Demo</a>
+      </nav>
+      <div class="nav-actions">
+        <a href="menu.html" class="btn btn-primary">Order Now</a>
+        <button class="theme-toggle" type="button" aria-label="Toggle theme">🌙</button>
+        <button class="cart-btn-trigger" aria-label="Open cart">🛒 <span class="cart-badge">0</span></button>
+        <button class="mobile-menu-btn" id="mobileMenuToggle">☰</button>
+      </div>
+    </div>
+  </header>
+
+  <main style="padding:48px 0 80px;">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">Shopping Cart</span>
+        <h1 class="section-title">Review Your Demo Order</h1>
+        <p class="section-subtitle">Cart persists with localStorage. Check free delivery qualification and apply available coupon offers.</p>
+      </div>
+      <div id="cartPageRoot"></div>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-bottom">
+      <p>© 2026 BiteCraft Demo.</p>
+      <p>No real payments or orders.</p>
+    </div>
+  </footer>
+  <script src="js/data.js"></script>
+  <script src="js/main.js"></script>
+  <script src="js/cart.js"></script>
+</body>
+</html>
